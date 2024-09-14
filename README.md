@@ -9,7 +9,7 @@ A Tampermonkey script to filter out diaries on Yamareco based on user IDs. This 
 
 ## Installation
 1. Install [Tampermonkey](https://www.tampermonkey.net/) on your browser if you haven't already.
-2. Copy the script from `yamareco-diary-filter.user.js` into a new Tampermonkey script.
+2. Copy the script from `userscript.js` into a new Tampermonkey script.
 3. Modify the `blacklist` array in the script to include the user IDs of users whose diaries you want to hide.
 
 ## Usage
@@ -20,4 +20,4 @@ A Tampermonkey script to filter out diaries on Yamareco based on user IDs. This 
 - You can modify the `blacklist` array by adding or removing user IDs.
 
 ```javascript
-const blacklist = ['12345', '67890'];  // Add or remove user IDs here
+const blacklist = ['123', '456', '789'];  // Add or remove user IDs here
