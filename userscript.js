@@ -2,7 +2,7 @@
 // @name         ヤマレコ日記フィルタ
 // @namespace    http://tampermonkey.net/
 // @version      1.0.1
-// @description  ブラックリストに登録したユーザーの日記を非表示にするスクリプト（ユーザー番号対応）
+// @description  ブラックリストに登録したユーザーの日記を非表示にするスクリプト（ユーザーID対応）
 // @author       Bunatree
 // @match        https://www.yamareco.com/modules/diary/*
 // @grant        none
@@ -12,8 +12,8 @@
 
   'use strict';
 
-  // ユーザー番号でブラックリストを指定します。
-  // ユーザー番号は、プロフィールページURLの「NNNN」の部分です。
+  // ユーザーIDでブラックリストを指定します。
+  // ユーザーIDは、プロフィールページURLの「NNNN」の部分です。
   // https://www.yamareco.com/modules/yamareco/userinfo-NNNN-prof.html
   // 数値でも文字列でもOKです。
   const blacklist = [123, '456', 789];
@@ -29,13 +29,13 @@
       // 投稿者のプロフィールページへのリンクを取得
       const userLink = diarySingleElm.querySelector('.right .ft a');
       if (userLink) {
-          // リンクからユーザー番号を抽出（userinfo-NNNN-prof.html の NNNN 部分）
+          // リンクからユーザーIDを抽出（userinfo-NNNN-prof.html の NNNN 部分）
           const userHref = userLink.getAttribute('href');
           const userIdMatch = userHref.match(/userinfo-(\d+)-prof\.html/);
 
-          // ユーザー番号が取得できた場合、ブラックリストと照合
+          // ユーザーIDが取得できた場合、ブラックリストと照合
           if (userIdMatch) {
-              // 正規表現で抽出したユーザー番号
+              // 正規表現で抽出したユーザーID
               const userId = userIdMatch[1];
               // リンクのテキストからユーザー名を取得
               const userName = userLink.textContent.trim();

@@ -1,23 +1,34 @@
-# yamareco-diary-filter
+# ヤマレコ日記フィルタ
 
-A Tampermonkey script to filter out diaries on Yamareco based on user IDs. This script allows users to hide diaries posted by specific users on Yamareco by adding their user IDs to a blacklist.
+ユーザーIDに基づいてヤマレコの日記をフィルタリングする Tampermonkey スクリプトです。
 
-## Features
-- Filter Yamareco diaries by user ID.
-- Automatically hides diaries from blacklisted users.
-- Simple and lightweight.
+スクリプト中の `blacklist` にユーザIDを登録することで、特定のユーザーによって投稿された日記を非表示にできます。
 
-## Installation
-1. Install [Tampermonkey](https://www.tampermonkey.net/) on your browser if you haven't already.
-2. Copy the script from `userscript.js` into a new Tampermonkey script.
-3. Modify the `blacklist` array in the script to include the user IDs of users whose diaries you want to hide.
+## 特徴
+- ブラックリストに登録されたユーザーの日記を自動的に非表示にします。
+- 対象ユーザーのニックネームが変更されても引き続き動作します。
+- シンプルで軽量です。
 
-## Usage
-1. Open the Yamareco diary page.
-2. The script will automatically hide diaries from users in the blacklist.
+## インストール方法
+1. ブラウザー拡張機能の [Tampermonkey](https://www.tampermonkey.net/) をインストールしてください。
+2. Chrome の場合、拡張機能の管理画面の「デベロッパーモード」をONにしてください。
+3. Tampermonkey のダッシュボードから新規スクリプトを開き、userscript.js の内容をコピー＆ペーストしてください。
+4. スクリプト中の `blacklist` 配列変数の値を編集し、対象ユーザーの ID を指定してください。
 
-## Customization
-- You can modify the `blacklist` array by adding or removing user IDs.
+## 設定例
+
+初期値では、ユーザー ID 123 と 456 と 789 が指定されています。
+
+この部分を書き換えてください。
 
 ```javascript
-const blacklist = ['123', '456', '789'];  // Add or remove user IDs here
+const blacklist = [123, '456', 789];
+```
+
+ユーザー ID は、プロフィールページ URL の「NNNN」の部分です。
+
+https://www.yamareco.com/modules/yamareco/userinfo-NNNN-prof.html
+
+## 使い方
+1. ブラウザーで [ヤマレコの日記ページ](https://www.yamareco.com/modules/diary/diarylist_summary.php) を開きます。
+2. スクリプトが発動し、指定されたユーザーの日記が自動的に非表示になります。
